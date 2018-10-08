@@ -6,6 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from "connected-react-router";
 import {history, store} from "./redux/store";
 import {Provider} from "react-redux";
+import * as english from './locale/english'
+
+export const locale = english;
 
 ReactDOM.render((
   <Provider store={store}>

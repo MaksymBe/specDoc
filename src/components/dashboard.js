@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Button, Divider, Icon, Input, Table} from "antd";
 import {getFoldersStructure} from "../redux/actions/folders";
+import {locale} from "../index";
 
 class DashboardComponent extends Component {
   columns = [
     {
-      title: 'Name',
+      title: locale.COMMON.NAME,
       dataIndex: 'name',
       key: 'name',
       render: (text, item) => {
@@ -19,7 +20,7 @@ class DashboardComponent extends Component {
       }
     },
     {
-      title: 'Actions',
+      title: locale.COMMON.ACTIONS,
       key: 'actions',
       render: (text, record) => (
         <span>
@@ -30,8 +31,9 @@ class DashboardComponent extends Component {
   ];
 
   static renderActions(record) {
-    const folderActions = [{name: 'Add folder'}, {name: 'Add file'}, {name: 'Edit'}, {name: 'Delete'}];
-    const fileActions = [{name: 'Open'}, {name: 'Edit'}, {name: 'Delete'}];
+    const {COMMON} = locale;
+    const folderActions = [{name: COMMON.ADD_FILE}, {name: COMMON.ADD_FOLDER}, {name: COMMON.EDIT}, {name: COMMON.DELETE}];
+    const fileActions = [{name: COMMON.OPEN}, {name: COMMON.EDIT}, {name: COMMON.DELETE}];
     const drawAction = (action, index) => (
       <span key={index.toString()}>
         <a>{action.name}</a>
@@ -57,17 +59,18 @@ class DashboardComponent extends Component {
 
   render() {
     const {foldersStructure} = this.props;
+    const {DASHBOARD, COMMON} = locale;
 
     return (
       <div className="page dashboard">
         <div className="page-title">
-          Dashboard
+          {DASHBOARD.PAGE_TITLE}
         </div>
         <div className="page-content">
           <div className="dashboard-management-panel">
             <div>
-              <Button htmlType="button" className="dashboard-management-panel-button">Add file</Button>
-              <Button htmlType="button" className="dashboard-management-panel-button">Add folder</Button>
+              <Button htmlType="button" className="dashboard-management-panel-button">{COMMON.ADD_FOLDER}</Button>
+              <Button htmlType="button" className="dashboard-management-panel-button">{COMMON.ADD_FILE}</Button>
             </div>
             <Input.Search className="dashboard-management-panel-search"/>
           </div>
