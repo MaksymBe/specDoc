@@ -6,15 +6,18 @@ import {Layout} from "antd";
 import {NavigationBar, Dashboard} from "./components";
 
 class App extends Component {
+
   render() {
     return (
       <main>
         <Layout>
           <NavigationBar/>
+          <Layout.Content>
+            <Switch>
+              <Route exact path='/' component={Dashboard}/>
+            </Switch>
+          </Layout.Content>
         </Layout>
-        <Switch>
-          <Route exact path='/' component={Dashboard}/>
-        </Switch>
       </main>
     );
   }
